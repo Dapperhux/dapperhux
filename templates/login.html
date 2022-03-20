@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>LOGIN</title>
+	<link rel="ICON" type="IMAGE/jpg" href="{% static 'images/logo.jpeg' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/login.css' %}">
+</head>
+<body>
+	<header>
+		<a href="{% url 'home' %}"><img src="{% static 'images/logo.jpeg' %}"></a>
+		<div>
+			<ul>
+				<li><a href="{% url 'home' %}">HOME</a></li>
+				<li><a href="#">SERVICES</a></li>
+				<li><a href="{% url 'contact' %}">CONTACT</a></li>
+				<li><a href="{% url 'about_us' %}">ABOUT US</a></li>
+				<li class="active"><a href="{% url 'login' %}">LOGIN</a></li>
+				<li><a href="{% url 'register' %}">SIGNUP FOR VIP</a></li>
+			</ul>
+		</div>
+	</header>
+
+
+	{% for message in messages %}
+	<h5>{{message}}</h5>
+	{% endfor %}
+
+	<form method="POST" action="/login/">
+		{% csrf_token %}
+        <label for="username">USERNAME</label>
+		<input type="text" name="username" id="username" placeholder="Brian"><br>
+		<label for="password">PASSWORD</label>
+		<input type="password" name="password" id="password" placeholder="*****"><br>
+		<button type="submit">LOGIN</button>
+		
+		
+	</form>
+		
+
+</body>
+</html>

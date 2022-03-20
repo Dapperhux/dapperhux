@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>sub</title>
+	<link rel="ICON" type="IMAGE/jpg" href="{% static 'images/logo.jpeg' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/plan_b.css' %}">
+</head>
+<body><header>
+		<a href="{% url 'home' %}"><img src="{% static 'images/logo.jpeg' %}"></a>
+		<div>
+			<ul>
+				<li><a href="{% url 'home' %}">HOME</a></li>
+				<li><a href="#">SERVICES</a></li>
+				<li><a href="{% url 'contact' %}">CONTACT</a></li>
+				<li><a href="{% url 'about_us' %}">ABOUT US</a></li>
+				{% if request.user.is_authenticated %}
+				{% if request.user.is_staff %}
+				<li><a href="{% url 'staff' %}">STAFF</a></li>
+				{% endif %}
+				<li><a href="{% url 'vip' %}">VIP TIPS</a></li>
+				<li><a href="#">REFER AND WIN</a></li>
+				<li><a href="{% url 'logout' %}">LOGOUT</a></li>
+				{% else %}
+				<li><a href="{% url 'login' %}">LOGIN</a></li>
+				<li><a href="{% url 'register' %}">SIGNUP FOR VIP</a></li>
+				{% endif %}
+			</ul>
+		</div>
+		<div class="user">
+		{% if request.user.is_authenticated %}
+				{{ user.username }}
+		{% endif %}
+		</div>
+	</header>
+	<h1>FOLLOW THE STEPS BELOW</h1><br>
+	<main>
+		STEP 1
+		<p>Go to the nearby ATM insert your card and enter pin.</p>
+		STEP 2
+		<p>Select "pay bills" or "quickteller" depending on the ATM</p>
+		STEP 3
+		<p>Select your account type</p>
+		STEP 4
+		<p>You will be directed to choose a payment obtion select "PAY MECHANT" or "OTHERS" depending on ATM</p>
+		STEP 5
+		<p>You will be prompted for a merchant code which is 04347201</p>
+		STEP 6 
+		<p>Input our account number 8140995321</p>
+		STEP 7
+		<p>Enter the amount "N27580.81 (60euro)" to deposit</p>
+		STEP 8
+		<p>Input your phone number {{ user.phone_number }} </p>
+		STEP 9
+		<p>you will recieve a confirmation that payment has been completed successfully</p>
+		STEP 10
+		<p>Screenshot your derbit alert, phone number,username, amount and submit to 08144720458 via whatsapp for verification</p>
+		STEP 11
+		<p>You will be notified within 24hrs upon your verification status.</p>
+	</main>
+	<h1>For other payment method "TRANSFER" whatsapp 08144720458</h1>
+</body>
+</html>

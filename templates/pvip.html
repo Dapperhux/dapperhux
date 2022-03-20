@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>sub</title>
+	<link rel="ICON" type="IMAGE/jpg" href="{% static 'images/logo.jpeg' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/pvip.css' %}">
+</head>
+<body><header>
+		<a href="{% url 'home' %}"><img src="{% static 'images/logo.jpeg' %}"></a>
+		<div>
+			<ul>
+				<li><a href="{% url 'home' %}">HOME</a></li>
+				<li><a href="#">SERVICES</a></li>
+				<li><a href="{% url 'contact' %}">CONTACT</a></li>
+				<li><a href="{% url 'about_us' %}">ABOUT US</a></li>
+				{% if request.user.is_authenticated %}
+				{% if request.user.is_staff %}
+				<li><a href="{% url 'staff' %}">STAFF</a></li>
+				{% endif %}
+				<li><a href="{% url 'vip' %}">VIP TIPS</a></li>
+				<li><a href="#">REFER AND WIN</a></li>
+				<li><a href="{% url 'logout' %}">LOGOUT</a></li>
+				{% else %}
+				<li><a href="{% url 'login' %}">LOGIN</a></li>
+				<li><a href="{% url 'register' %}">SIGNUP FOR VIP</a></li>
+				{% endif %}
+			</ul>
+		</div>
+		<div class="user">
+		{% if request.user.is_authenticated %}
+				{{ user.username }}
+		{% endif %}
+		</div>
+	</header>
+	<h1>SELECT PREFERRED PAKAGE</h1><br>
+	<main>
+	<a href="{% url 'plan_a' %}">N18387.20 (40euro) for two weeks</a><br>
+	<a href="{% url 'plan_b' %}">N27580.81 (60euro) for one month</a><br>
+	<a href="{% url 'plan_c' %}">N41371.21 (90euro) fo two months</a><br>
+
+	<h3>SUBSCRIBE NOW!!!</h3>
+	</main>
+
+</body>
+</html>

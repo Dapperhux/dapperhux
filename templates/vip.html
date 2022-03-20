@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>VIP</title>
+	<link rel="ICON" type="IMAGE/jpg" href="{% static 'images/logo.jpeg' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/vip.css' %}">
+</head>
+<body>
+	<header>
+		<a href="{% url 'home' %}" class="aa"><img src="{% static 'images/logo.jpeg' %}"></a>
+		<div>
+			<ul>
+				<li><a href="{% url 'home' %}">HOME</a></li>
+				<li><a href="#">SERVICES</a></li>
+				<li><a href="{% url 'contact' %}">CONTACT</a></li>
+				<li><a href="{% url 'about_us' %}">ABOUT US</a></li>
+				{% if request.user.is_authenticated %}
+				{% if request.user.is_staff %}
+				<li><a href="{% url 'staff' %}">STAFF</a></li>
+				{% endif %}
+				<li class="active"><a href="{% url 'vip' %}">VIP TIPS</a></li>
+				<li><a href="#">REFER AND WIN</a></li>
+				<li><a href="{% url 'logout' %}">LOGOUT</a></li>
+				{% else %}
+				<li><a href="{% url 'login' %}">LOGIN</a></li>
+				<li><a href="{% url 'register' %}">SIGNUP FOR VIP</a></li>
+				{% endif %}
+			</ul>
+		</div>
+		<div class="user">
+		{% if request.user.is_authenticated %}
+				{{ user.username }}
+		{% endif %}
+		</div>
+	</header>
+	<main>
+		<div class="details">
+			<br>
+			<h1>USER PROFILE</h1><br><br>
+			<p> {{ user.first_name }} {{ user.last_name }} YOU ARE A VIP HERE</p><br>
+			<p> {{ user.phone_number }} </p><br>
+			<p> {{ user.email }} </p><br>
+			<p>JOINED SINCE {{ user.date_joined|timesince }} AGO </p>
+		</div>
+		<div class="pt">
+			<br>
+			<h1>VIP DAILY TIPS</h1>
+			<br>
+			{% for post in posts %}
+			<div class="pp"><p>{{post.date|timesince}} ago</p>{{post.body}}
+			</div>
+			{% endfor %}
+		</div>
+	</main>
+
+</body>
+</html>

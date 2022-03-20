@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>REGISTER PAGE</title>
+	<link rel="ICON" type="IMAGE/jpg" href="{% static 'images/logo.jpeg' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/register.css' %}">
+	<script src="{% static 'js/register.js' %}"></script>
+</head>
+<body>
+	<header>
+		<a href="{% url 'home' %}"><img src="{% static 'images/logo.jpeg' %}"></a>
+		<div>
+			<ul>
+				<li><a href="{% url 'home' %}">HOME</a></li>
+				<li><a href="#">SERVICES</a></li>
+				<li><a href="{% url 'contact' %}">CONTACT</a></li>
+				<li><a href="{% url 'about_us' %}">ABOUT US</a></li>
+				<li><a href="{% url 'login' %}">LOGIN</a></li>
+				<li class="active"><a href="{% url 'register' %}">SIGNUP FOR VIP</a></li>
+			</ul>
+		</div>
+	</header>
+
+	{% for message in messages %}
+		<h5>{{message}}</h5>
+		{% endfor %}
+		
+
+	<form method="POST" action="/register/">
+		{% csrf_token %}
+        <label for="username">USERNAME</label>
+		<input type="text" name="username" id="username" placeholder="Brian" required><br>
+		<label for="first_name">FIRSTNAME</label>
+		<input type="text" name="first_name" id="first_name" placeholder="John" required><br>
+		<label for="last_name">LASTNAME</label>
+		<input type="text" name="last_name" id="last_name" placeholder="Author" required><br>
+		<label for="phone_number">PHONE NUMBER</label>
+		<input type="number" name="phone_number" id="phone_number" placeholder="08012345678" onchange="peter()" required><br>
+		<label for="email">EMAIL</label>
+		<input type="email" name="email" id="email11" placeholder="brian@gmail.com" required><br>
+		<label for="email2">CONFIRM EMAIL</label>
+		<input type="email" name="email2" id="email2" placeholder="brian@gmail.com" onchange="james()" required><br>
+		<label for="password">PASSWORD</label>
+		<input type="password" name="password" id="password" placeholder="Input strong password" required><br>
+		<label for="password2">CONFIRM PASSWORD</label>
+		<input type="password" name="password2" id="password2" placeholder="Repeat password" onchange="johns()" required><br>
+		<button type="submit" onclick="return johns(), james(), peter();">REGISTER</button>
+		
+		
+	</form>
+		
+
+</body>
+</html>

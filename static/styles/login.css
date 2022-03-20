@@ -1,0 +1,94 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: black;
+}
+
+header {
+	height: 10rem;
+	width: 100%;
+	background-color: #38ff00;
+}
+
+header a img {
+	height: 3rem;
+	width: 3rem;
+	border-radius: 25%;
+	margin: 8px;
+}
+header div {
+	margin-top: -1.5rem;
+}
+
+header div ul {
+   list-style: none;
+   color: white;
+   float: right;
+}
+
+header div ul li {
+	display: inline-block;
+	margin: 5px;
+	
+}
+
+
+header div ul li a {
+	text-decoration: none;
+	color: black;
+	font-size: 90%;
+	font-family: cursive;
+}
+
+header .user {
+	margin-left: 8rem;
+	margin-top: -1rem;
+	color: white;
+	font-family: Algerian;
+}
+
+.active, header div ul li:hover
+{
+  background-color: transparent;
+  border-radius: 3px;
+  border: solid 3.4px black;
+  transition: 0.5s;
+  color: white;
+}
+
+form {
+	margin-left: 33%;
+	margin-top: 6rem;
+	background-color: #3C793A;
+	width: 45%;
+	text-align: center;
+	border-radius: 15px;
+}
+
+form input {
+	margin-top: 10px;
+	border: solid 2px black;
+	border-radius: 4px;
+	width: 40%;
+}
+
+form button {
+	margin: 15px;
+	color: black;
+	background-color: #90EC2D;
+	border-radius: 5px;
+	padding: 5px;
+	border: solid 2px black;
+	width: 40%;
+	font-size: 40%;
+}
+
+h5 {
+	color: red;
+	margin-left: 43%;
+	margin-top: 1rem;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>DAILY POST</title>
+	<link rel="ICON" type="IMAGE/jpg" href="{% static 'images/logo.jpeg' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/daily_staff.css' %}">
+	<script src="{% static 'js/test_staff.js' %}"></script>
+</head>
+<body>
+	<header>
+		<a href="{% url 'home' %}"><img src="{% static 'images/logo.jpeg' %}"></a>
+		<div>
+			<ul>
+				<li><a href="{% url 'home' %}">HOME</a></li>
+				<li><a href="#">SERVICES</a></li>
+				<li><a href="{% url 'contact' %}">CONTACT</a></li>
+				<li><a href="{% url 'about_us' %}">ABOUT US</a></li>
+				{% if request.user.is_authenticated %}
+				<li><a href="{% url 'staff' %}">STAFF</a></li>
+				<li><a href="#">REFER AND WIN</a></li>
+				<li><a href="{% url 'logout' %}">LOGOUT</a></li>
+				{% else %}
+				<li><a href="{% url 'login' %}">LOGIN</a></li>
+				<li><a href="{% url 'register' %}">SIGNUP FOR VIP</a></li>
+				{% endif %}
+			</ul>
+		</div>
+		<div class="user">
+		{% if request.user.is_authenticated %}
+				{{ user.username }} YOU ARE A STAFF HERE
+		{% endif %}
+		</div>
+	</header>
+	{% for message in messages %}
+	<h5>{{message}}</h5>
+	{% endfor %}
+
+	<form method="POST" action="/daily_staff/">
+		{% csrf_token %}
+		<input type="text" name="body" id="body" placeholder="input daily tips"><br>
+		<button type="submit" onclick="return peter();">POST</button>
+		
+		
+	</form>
+		
+
+</body>
+</html>
